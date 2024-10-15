@@ -7,7 +7,7 @@ const Index = () => {
   const toDay = useMemo(
     () => [
       new Date().getFullYear(),
-      new Date().getMonth() + 1,
+      new Date().getMonth(),
       new Date().getDate(),
     ],
     []

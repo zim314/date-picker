@@ -11,7 +11,7 @@ const Header = ({ toDay }: Props) => {
         <ChevronLeft />
       </button>
       <p>
-        {toDay[0]}年 {toDay[1]}月
+        {toDay[0]}年 {toDay[1] + 1}月
       </p>
       <button className="datePicker__monthSelect">
         <ChevronRight />

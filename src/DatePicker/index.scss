@@ -1,3 +1,12 @@
+%day-style {
+    border: none;
+    padding: 0px;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .datePicker {
     &__layout {
         width: 350px;
@@ -27,9 +36,9 @@
     }
 
     &__dayButton {
+        @extend %day-style;
         background-color: white; 
-        // Active: #006edc
-        // Non-Current Month: #757575
+        // Active: #006edc     
 
         &:hover {
             background-color: #e6e6e6;
@@ -39,4 +48,10 @@
             background-color: #ffff76;
         }
     }
+
+    &__disbledDay {
+        @extend %day-style;
+        color: #757575;
+        cursor: not-allowed;
+    }   
 }

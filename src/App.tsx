@@ -4,7 +4,7 @@ import "./app.scss";
 
 const App = () => {
   return (
-    <div style={{ backgroundColor: "gray" }}>
+    <div>
       <DatePicker />
     </div>
   );

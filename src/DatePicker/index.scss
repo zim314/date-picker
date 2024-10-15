@@ -1,8 +1,26 @@
+%day-style {
+    border: none;
+    padding: 0px;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+%content {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
 .datePicker {
     &__layout {
         width: 350px;
         height: 240px;
         font-size: 16px;
+        display: flex;
+        flex-direction: column;
+        padding: 5px 10px 10px;
     }
 
     &__header {
@@ -10,16 +28,26 @@
         height: 44px;
         margin-bottom: 16px;
         display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     &__content {
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
+        &--6rows {
+            @extend %content;
+            grid-template-rows: repeat(6,1fr);
+        }
+
+        &--5rows {
+            @extend %content;
+            grid-template-rows: repeat(5,1fr);
+        }
     }
 
     &__monthSelect {
         width: 44px;
         height: 44px;
+        border: none;
         background-color: white;
         &:hover {
             background-color: #e6e6e6
@@ -27,16 +55,22 @@
     }
 
     &__dayButton {
+        @extend %day-style;
         background-color: white; 
-        // Active: #006edc
-        // Non-Current Month: #757575
-
         &:hover {
             background-color: #e6e6e6;
         }
-
+        
         &--today {
             background-color: #ffff76;
         }
+
+        // Active: #006edc     
     }
+
+    &__disbledDay {
+        @extend %day-style;
+        color: #757575;
+        cursor: not-allowed;
+    }   
 }

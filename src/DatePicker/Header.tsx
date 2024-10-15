@@ -1,19 +1,21 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Props {
-  toDay: number[];
+  showDate: number[];
+  goToPreMonth: () => void;
+  goToNextMonth: () => void;
 }
 
-const Header = ({ toDay }: Props) => {
+const Header = ({ showDate, goToPreMonth, goToNextMonth }: Props) => {
   return (
     <div className="datePicker__header">
-      <button className="datePicker__monthSelect">
+      <button className="datePicker__monthSelect" onClick={goToPreMonth}>
         <ChevronLeft />
       </button>
       <p>
-        {toDay[0]}年 {toDay[1] + 1}月
+        {showDate[0]}年 {showDate[1] + 1}月
       </p>
-      <button className="datePicker__monthSelect">
+      <button className="datePicker__monthSelect" onClick={goToNextMonth}>
         <ChevronRight />
       </button>
     </div>

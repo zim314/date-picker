@@ -1,13 +1,17 @@
 import "./index.scss";
 import Header from "./Header";
 import DaySelect from "./DaySelect";
+import { useMemo } from "react";
 
-const index = () => {
-  const toDay = [
-    new Date().getFullYear(),
-    new Date().getMonth() + 1,
-    new Date().getDate(),
-  ];
+const Index = () => {
+  const toDay = useMemo(
+    () => [
+      new Date().getFullYear(),
+      new Date().getMonth() + 1,
+      new Date().getDate(),
+    ],
+    []
+  );
 
   return (
     <div className="datePicker__layout debug">
@@ -17,4 +21,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

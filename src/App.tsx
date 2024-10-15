@@ -1,4 +1,5 @@
 import DatePicker from "./DatePicker";
+import "./reset.scss";
 import "./app.scss";
 
 const App = () => {

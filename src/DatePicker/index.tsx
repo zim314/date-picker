@@ -13,15 +13,15 @@ const Index = () => {
     []
   );
 
-  const [stateDate, setStateDate] = useState([toDay[0], toDay[1]]);
+  const [showDate, setShowDate] = useState([toDay[0], toDay[1]]);
 
   const handleGoToPreMonth = () =>
-    setStateDate((prev) =>
+    setShowDate((prev) =>
       prev[1] > 0 ? [prev[0], prev[1] - 1, prev[2]] : [prev[0] - 1, 11, prev[2]]
     );
 
   const handleGoToNextMonth = () =>
-    setStateDate((prev) =>
+    setShowDate((prev) =>
       prev[1] === 11
         ? [prev[0] + 1, 0, prev[2]]
         : [prev[0], prev[1] + 1, prev[2]]
@@ -30,11 +30,11 @@ const Index = () => {
   return (
     <div className="datePicker__layout debug">
       <Header
-        showDate={stateDate}
+        showDate={showDate}
         goToPreMonth={handleGoToPreMonth}
         goToNextMonth={handleGoToNextMonth}
       />
-      <DaySelect toDay={toDay} />
+      <DaySelect toDay={toDay} showDate={showDate} />
     </div>
   );
 };

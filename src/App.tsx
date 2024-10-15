@@ -1,5 +1,13 @@
+import DatePicker from "./DatePicker";
+import "./reset.scss";
+import "./app.scss";
+
 const App = () => {
-  return <div>環境啟動</div>;
+  return (
+    <div style={{ backgroundColor: "gray" }}>
+      <DatePicker />
+    </div>
+  );
 };
 
 export default App;

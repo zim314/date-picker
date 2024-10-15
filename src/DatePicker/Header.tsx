@@ -1,12 +1,18 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const Header = () => {
+interface Props {
+  toDay: number[];
+}
+
+const Header = ({ toDay }: Props) => {
   return (
     <div className="datePicker__header">
       <button className="datePicker__monthSelect">
         <ChevronLeft />
       </button>
-      <p>2022年 7月</p>
+      <p>
+        {toDay[0]}年 {toDay[1]}月
+      </p>
       <button className="datePicker__monthSelect">
         <ChevronRight />
       </button>

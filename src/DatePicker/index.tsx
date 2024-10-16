@@ -3,7 +3,11 @@ import Header from "./Header";
 import DaySelect from "./DaySelect";
 import { useMemo, useState } from "react";
 
-const Index = () => {
+interface Props {
+  selectDate: (year: number, month: number, day: number) => void;
+}
+
+const Index = ({ selectDate }: Props) => {
   const toDay = useMemo(
     () => [
       new Date().getFullYear(),
@@ -34,7 +38,7 @@ const Index = () => {
         goToPreMonth={handleGoToPreMonth}
         goToNextMonth={handleGoToNextMonth}
       />
-      <DaySelect toDay={toDay} showDate={showDate} />
+      <DaySelect toDay={toDay} showDate={showDate} selectDate={selectDate} />
     </div>
   );
 };

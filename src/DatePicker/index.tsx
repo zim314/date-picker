@@ -1,18 +1,16 @@
 import "./index.scss";
 import Header from "./Header";
 import DaySelect from "./DaySelect";
-import { useMemo, useState } from "react";
+import { useState } from "react";
+import { SelectDate } from "../App";
 
-const Index = () => {
-  const toDay = useMemo(
-    () => [
-      new Date().getFullYear(),
-      new Date().getMonth(),
-      new Date().getDate(),
-    ],
-    []
-  );
+interface Props {
+  toDay: number[];
+  selectDate: SelectDate;
+  handleSelectDate: (year: number, month: number, day: number) => void;
+}
 
+const Index = ({ toDay, selectDate, handleSelectDate }: Props) => {
   const [showDate, setShowDate] = useState([toDay[0], toDay[1]]);
 
   const handleGoToPreMonth = () =>
@@ -28,13 +26,18 @@ const Index = () => {
     );
 
   return (
-    <div className="datePicker__layout debug">
+    <div className="datePicker__layout">
       <Header
         showDate={showDate}
         goToPreMonth={handleGoToPreMonth}
         goToNextMonth={handleGoToNextMonth}
       />
-      <DaySelect toDay={toDay} showDate={showDate} />
+      <DaySelect
+        toDay={toDay}
+        showDate={showDate}
+        selectDate={selectDate}
+        handleSelectDate={handleSelectDate}
+      />
     </div>
   );
 };

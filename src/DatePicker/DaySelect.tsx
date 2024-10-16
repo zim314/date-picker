@@ -33,30 +33,34 @@ const DaySelect = ({
       {Array.from(
         { length: firstDayOfMonth - 1 },
         (_, i) => daysInPrevMonth - i
-      ).map((day: number) => (
-        <button
-          key={"previous" + day}
-          className={`
+      )
+        .reverse()
+        .map((day: number) => (
+          <button
+            key={"previous" + day}
+            className={`
             datePicker__notCurrentMonth
-             ${
-               dateComparison(
-                 [showDate[0], showDate[1] - 1, day],
-                 selectDate.startDate
-               ) === +1 && "datePicker__dayButton--active"
-             }
             ${
               dateComparison(
                 [showDate[0], showDate[1] - 1, day],
                 selectDate.startDate
               ) === 0 && "datePicker__dayButton--active"
             }
+            ${
+              dateComparison(
+                [showDate[0], showDate[1] - 1, day],
+                selectDate.startDate
+              ) === 1 &&
+              selectDate.overDate !== null &&
+              "datePicker__dayButton--active"
+            }
           `}
-          onClick={() => handleSelectDate(showDate[0], showDate[1] - 1, day)}
-          disabled={disableSelectionOfNonCurrentMonth}
-        >
-          {day}日
-        </button>
-      ))}
+            onClick={() => handleSelectDate(showDate[0], showDate[1] - 1, day)}
+            disabled={disableSelectionOfNonCurrentMonth}
+          >
+            {day}日
+          </button>
+        ))}
       {Array.from({ length: daysInMonth }, (_, i) => i + 1).map(
         (day: number, index: number) => {
           return (

@@ -26,7 +26,7 @@ const Index = ({ toDay, selectDate, handleSelectDate }: Props) => {
     );
 
   return (
-    <div className="datePicker__layout debug">
+    <div className="datePicker__layout">
       <Header
         showDate={showDate}
         goToPreMonth={handleGoToPreMonth}

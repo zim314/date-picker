@@ -53,6 +53,11 @@
         &:hover {
             background-color: #e6e6e6
         }
+
+        &:disabled {
+            cursor: not-allowed;
+            background-color: white;
+        }
     }
 
     &__dayButton {
@@ -74,8 +79,13 @@
     &__notCurrentMonth {
         @extend %day-style;
         color: #757575;
+        &:hover {
+            background-color: #e6e6e6;
+        }
+
         &:disabled {
             cursor: not-allowed;
+            background-color: #fafafa;
         }
     }   
 }

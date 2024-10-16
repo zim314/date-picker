@@ -20,31 +20,40 @@ const App = () => {
     []
   );
 
-  const [task1Date, setTask1Date] = useState<SelectDate>({
+  const [selectDate, setSelectDate] = useState<SelectDate>({
     startDate: null,
     overDate: null,
   });
 
-  const handleTask1Date = (year: number, month: number, day: number) => {
-    const result = dateComparison([year, month, day], task1Date.startDate);
+  const getTask1Date = (year: number, month: number, day: number) => {
+    const result = dateComparison([year, month, day], toDay);
+    if (result !== 1)
+      setSelectDate((prev) => ({
+        ...prev,
+        startDate: [year, month, day],
+      }));
+  };
+
+  const getTask2Date = (year: number, month: number, day: number) => {
+    const result = dateComparison([year, month, day], selectDate.startDate);
 
     switch (result) {
       case -1: {
-        setTask1Date((prev) => ({
+        setSelectDate((prev) => ({
           startDate: [year, month, day],
           overDate: Array.isArray(prev.overDate) ? [...prev.overDate] : null,
         }));
         break;
       }
       case 0: {
-        setTask1Date({
+        setSelectDate({
           startDate: null,
           overDate: null,
         });
         break;
       }
       case 1: {
-        setTask1Date((prev) => ({
+        setSelectDate((prev) => ({
           startDate: Array.isArray(prev.startDate) ? [...prev.startDate] : null,
           overDate: [year, month, day],
         }));
@@ -57,19 +66,21 @@ const App = () => {
     <>
       <div className="app__container">
         <h3 className="app__question">
-          Task – 1 (Date Range Component for current month)
+          Task.1 (Date Range Component for current month)
         </h3>
         <DatePicker
           toDay={toDay}
-          selectDate={task1Date}
-          handleSelectDate={handleTask1Date}
+          selectDate={selectDate}
+          handleSelectDate={getTask1Date}
+          disabledSelectMonth
+          disableSelectionOfNonCurrentMonth
         />
         <div className="app__selectDate">
-          {task1Date.startDate && (
-            <p>已選擇日期 {changeDateFormat(task1Date.startDate)} </p>
+          {selectDate.startDate && (
+            <p>已選擇日期 {changeDateFormat(selectDate.startDate)} </p>
           )}
-          {task1Date.overDate && (
-            <p>&nbsp;到 {changeDateFormat(task1Date.overDate)}</p>
+          {selectDate.overDate && (
+            <p>&nbsp;到 {changeDateFormat(selectDate.overDate)}</p>
           )}
         </div>
       </div>

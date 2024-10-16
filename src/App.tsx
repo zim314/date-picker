@@ -1,7 +1,7 @@
 import DatePicker from "./DatePicker";
 import "./reset.scss";
 import "./app.scss";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import dateComparison from "./DatePicker/dateComparison";
 import changeDateFormat from "./DatePicker/changeDateFormat";
 

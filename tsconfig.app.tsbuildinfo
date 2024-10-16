@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/datepicker/dayselect.tsx","./src/datepicker/header.tsx","./src/datepicker/changedateformat.ts","./src/datepicker/datecomparison.ts","./src/datepicker/index.tsx"],"version":"5.6.3"}

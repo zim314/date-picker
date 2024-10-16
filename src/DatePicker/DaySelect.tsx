@@ -5,6 +5,7 @@ interface Props {
   showDate: number[];
   selectDate: SelectDate;
   handleSelectDate: (year: number, month: number, day: number) => void;
+  disableSelectionOfNonCurrentMonth?: boolean;
 }
 
 const DaySelect = ({
@@ -12,6 +13,7 @@ const DaySelect = ({
   showDate,
   selectDate,
   handleSelectDate,
+  disableSelectionOfNonCurrentMonth,
 }: Props) => {
   const daysInMonth = new Date(showDate[0], showDate[1] + 1, 0).getDate();
   const daysInPrevMonth = new Date(showDate[0], showDate[1], 0).getDate();
@@ -50,6 +52,7 @@ const DaySelect = ({
             }
           `}
           onClick={() => handleSelectDate(showDate[0], showDate[1] - 1, day)}
+          disabled={disableSelectionOfNonCurrentMonth}
         >
           {day}日
         </button>
@@ -154,6 +157,7 @@ const DaySelect = ({
               onClick={() =>
                 handleSelectDate(showDate[0], showDate[1] + 1, index + 1)
               }
+              disabled={disableSelectionOfNonCurrentMonth}
             >
               {day}日
             </button>

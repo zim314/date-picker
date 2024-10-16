@@ -8,9 +8,17 @@ interface Props {
   toDay: number[];
   selectDate: SelectDate;
   handleSelectDate: (year: number, month: number, day: number) => void;
+  disabledSelectMonth?: boolean;
+  disableSelectionOfNonCurrentMonth?: boolean;
 }
 
-const Index = ({ toDay, selectDate, handleSelectDate }: Props) => {
+const Index = ({
+  toDay,
+  selectDate,
+  handleSelectDate,
+  disabledSelectMonth,
+  disableSelectionOfNonCurrentMonth,
+}: Props) => {
   const [showDate, setShowDate] = useState([toDay[0], toDay[1]]);
 
   const handleGoToPreMonth = () =>
@@ -31,12 +39,14 @@ const Index = ({ toDay, selectDate, handleSelectDate }: Props) => {
         showDate={showDate}
         goToPreMonth={handleGoToPreMonth}
         goToNextMonth={handleGoToNextMonth}
+        disabled={disabledSelectMonth}
       />
       <DaySelect
         toDay={toDay}
         showDate={showDate}
         selectDate={selectDate}
         handleSelectDate={handleSelectDate}
+        disableSelectionOfNonCurrentMonth={disableSelectionOfNonCurrentMonth}
       />
     </div>
   );

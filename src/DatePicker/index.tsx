@@ -1,22 +1,16 @@
 import "./index.scss";
 import Header from "./Header";
 import DaySelect from "./DaySelect";
-import { useMemo, useState } from "react";
+import { useState } from "react";
+import { SelectDate } from "../App";
 
 interface Props {
-  selectDate: (year: number, month: number, day: number) => void;
+  toDay: number[];
+  selectDate: SelectDate;
+  handleSelectDate: (year: number, month: number, day: number) => void;
 }
 
-const Index = ({ selectDate }: Props) => {
-  const toDay = useMemo(
-    () => [
-      new Date().getFullYear(),
-      new Date().getMonth(),
-      new Date().getDate(),
-    ],
-    []
-  );
-
+const Index = ({ toDay, selectDate, handleSelectDate }: Props) => {
   const [showDate, setShowDate] = useState([toDay[0], toDay[1]]);
 
   const handleGoToPreMonth = () =>
@@ -38,7 +32,12 @@ const Index = ({ selectDate }: Props) => {
         goToPreMonth={handleGoToPreMonth}
         goToNextMonth={handleGoToNextMonth}
       />
-      <DaySelect toDay={toDay} showDate={showDate} selectDate={selectDate} />
+      <DaySelect
+        toDay={toDay}
+        showDate={showDate}
+        selectDate={selectDate}
+        handleSelectDate={handleSelectDate}
+      />
     </div>
   );
 };

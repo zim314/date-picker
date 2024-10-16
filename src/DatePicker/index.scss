@@ -65,12 +65,16 @@
             background-color: #ffff76;
         }
 
-        // Active: #006edc     
+        &--active {
+            background-color:  #006edc;
+        }
     }
 
-    &__disbledDay {
+    &__notCurrentMonth {
         @extend %day-style;
         color: #757575;
-        cursor: not-allowed;
+        &:disabled {
+            cursor: not-allowed;
+        }
     }   
 }
